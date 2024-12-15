@@ -221,9 +221,6 @@ export function transformSourceFile(state: TransformState, node: ts.SourceFile) 
 
 	const headerStatements = luau.list.make<luau.Statement>();
 
-	// add build information to the tree
-	luau.list.push(headerStatements, luau.comment(` Compiled with roblox-ts v${COMPILER_VERSION}`));
-
 	// add the Runtime library to the tree if it is used
 	if (state.usesRuntimeLib) {
 		luau.list.push(headerStatements, state.createRuntimeLibImport(node));
